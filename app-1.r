@@ -14,7 +14,7 @@ ui <- fluidPage(theme = shinytheme("cyborg"),
             selectInput("method","METODA:",choices = c("HELLWIG","TOPSIS","STANDARYZOWANYCH SUM","RANG","GŁÓWNYCH SKŁADOWYCH"))
             ),
             mainPanel(
-              textOutput("description"), #tu przydzielić opisy metod w zależności od wyboru
+              textOutput("description") #tu przydzielić opisy metod w zależności od wyboru
             )),
     
     tabPanel("DANE",
@@ -27,7 +27,7 @@ ui <- fluidPage(theme = shinytheme("cyborg"),
             mainPanel(
               fileInput(inputId = "file", "Wybierz plik", 
                         accept=c('text/csv','text/comma-separated-values,text/plain','.csv')), #wczytuje dane do "file"
-              dataTableOutput("data_view"), #tu przydzielić tabelke z danymi po wczytaniu
+              dataTableOutput("data_view") #tu przydzielić tabelke z danymi po wczytaniu
             )),
    
     tabPanel("RANKING",
