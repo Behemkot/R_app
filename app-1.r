@@ -2,11 +2,12 @@ library(shiny)
 library(shinythemes)
 library(topsis)
 library(clusterSim)
+library(DT)
 
 variables <- c()
 
 ui <- fluidPage(theme = shinytheme("cyborg"),
-   
+  includeCSS("./style/table.css"),
   titlePanel("Projekt IE"),
   navbarPage("MENU",inverse = T,
     tabPanel("OPIS",
@@ -221,7 +222,7 @@ server <- function(input, output, session) {
   
   values$filtered <- reactive({
     data <- values$data()
-    data <- data[,as.vector(input$header) ] # todo
+    data <- data[as.vector(input$header)]
   })
   
   # todo
@@ -247,9 +248,8 @@ server <- function(input, output, session) {
   
   # podgląd danych
   # todo: nie wyswietlją się nazwy wierszy
-  #       nie wyswietla podglad jesli wybierzemy tylko jedna kolumne
-  output$data_view <- renderDataTable({
-      values$filtered()
+  output$data_view <- DT::renderDataTable({
+      datatable(values$filtered(), rownames = TRUE)
     })
 
   # skrypty ogarniające ranking
