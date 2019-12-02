@@ -28,18 +28,21 @@ Struktura aplikacji została podzielona na 3 główne części:
   - OPIS
   - DANE
   - RANKING
-  
+
+### OPIS
+Sekcja OPIS stworzona została przez Katarzynę Jędrocha.
 W sekcji OPIS znajdują się opisy metod użytych do tworzenia rankingów m.in.: 
-#
-#   
-#
-#
+Metoda HELLWIGA, TOPSIS, SUMY RANG, STANDARYZOWANYCH SUM.
+Dzięki tej sekcji Użytkownik zostaje wprowadzony w metody które zostaną użyte do stworzenia rankingów na podstawie jego danych, w taki sposób, aby mógł dobrać najlepiej pasującą do jego zbioru. W każdym z opisów wymienione są wady i zalety metod oraz ich chrakterystyczne cechy.
+
+### DANE
 W sekcji DANE znajdują się: 
 #
 #
 #
 #
 #
+### RANKING
 W sekcji RANKING znajdują się :
 #
 #
