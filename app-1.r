@@ -89,7 +89,8 @@ Hellwig_func <- function(data, w, ch) {
 }
 
 funcTopsis <- function(data, w, ch) {
-  dane_topsis <-as.matrix(data)
+  
+  dane_topsis <- as.matrix(data)
   wynik_topsis <- as.data.frame(topsis(dane_topsis, w, ch))
   
   rownames(wynik_topsis) <- rownames(data)
@@ -182,11 +183,6 @@ metodaRang <- function(dane, wagi, charakter){
   return(dane_rangowane)
 }
 
-# todo
-metodaGlownejSkladowej <- function(dane, wagi, charakter) {
-  return(dane)
-}
-
 server <- function(input, output, session) {
   
   #Opisy metod
@@ -211,7 +207,7 @@ server <- function(input, output, session) {
     if(is.null(infile)){
       return(data.frame())
     }
-    read.csv(infile$datapath, sep = ';', row.names = 1, header = TRUE, encoding = "utf-8")
+    read.csv(infile$datapath, sep = ';', dec = ',', row.names = 1, header = TRUE, encoding = "utf-8")
   })
   
   
