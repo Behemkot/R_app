@@ -22,12 +22,14 @@ ui <- fluidPage(theme = shinytheme("cyborg"),
              sidebarPanel(
                tabPanel("WYBÓR",
                         checkboxGroupInput("header", "Zmienne:", choices = variables), #w variables mają być nazwy zmiennych, a z headera wybieramy zmienne
-                        actionButton("selectall","Zaznacz wszystkie")
+                        actionButton("selectall","Zaznacz wszystkie"), 
+                        checkboxGroupInput("ch_test", "TEST", choices = variables)
                       )
              ),
             mainPanel(
               fileInput(inputId = "file", "Wybierz plik", 
                         accept=c('text/csv','text/comma-separated-values,text/plain','.csv')), #wczytuje dane do "file"
+              textOutput("ch_test_output"),
               dataTableOutput("data_view") #tu przydzielić tabelke z danymi po wczytaniu
             )),
    
@@ -203,6 +205,7 @@ server <- function(input, output, session) {
     read.csv(infile$datapath, sep = ';', row.names = 1, header = TRUE, encoding = "utf-8")
   })
   
+  
   # wybór zmiennych
   observe({
     data <- values$data()
@@ -216,13 +219,21 @@ server <- function(input, output, session) {
     else{
       updateCheckboxGroupInput(session,"header",choices = variables,selected = variables)
     }
-
-    
   })
   
   values$filtered <- reactive({
     data <- values$data()
     data <- data[as.vector(input$header)]
+  })
+  
+  values$selected <- reactive({
+    data <- values$filtered()
+    data <- colnames(data)
+  })
+  
+  observe({
+    selected <- values$selected()
+    updateCheckboxGroupInput(session, "header", choices = selected)
   })
   
   # todo
@@ -238,6 +249,7 @@ server <- function(input, output, session) {
   
   # todo
   values$character <- reactive({
+    data <- 
     data <- values$filtered()
     ch <- c()
     for(i in 1:dim(data)[2]){
@@ -246,11 +258,6 @@ server <- function(input, output, session) {
     ch
   })
   
-  # podgląd danych
-  # todo: nie wyswietlją się nazwy wierszy
-  output$data_view <- DT::renderDataTable({
-      datatable(values$filtered(), rownames = TRUE)
-    })
 
   # skrypty ogarniające ranking
   values$HELLWIG <- reactive({
@@ -302,6 +309,12 @@ server <- function(input, output, session) {
     data <- metodaGlownejSkladowej(data, w, ch)
     data
   })
+  
+  # podgląd danych
+  output$data_view <- DT::renderDataTable({
+    datatable(values$filtered(), rownames = TRUE)
+  })
+  
   
   # wyświetlanie rankingów
   output$hellwig_rank <- renderDataTable({values$HELLWIG()})
