@@ -193,6 +193,23 @@ metodaGlownejSkladowej <- function(dane, wagi, charakter) {
 
 server <- function(input, output, session) {
   
+  #Opisy metod
+  
+  output$description<-renderText(
+    if(input$method=="HELLWIG"){
+      "Metoda Hellwiga jest jedną z powszechnie stosowanych metod taksonomicznych. Oblicza się ją jako syntetyczny wskaźnik taksonomicznej odległości wybranego obiektu od teoretycznego wzorca rozwoju. Przy wykorzystaniu odpowiednich wzorów wyznaczyć można wskaźnik syntetyczny dla każdego obiektu. Miernik ten przyjmuje wartości z przedziału [0,1]. Im wyższa wartość miernika tym obiekt jest bardziej zbliżony do wzorca, natomiast im niższa wartość tym obiekt jest bardziej od niego oddalony."
+    }else if(input$method=="TOPSIS"){
+      "Idea metody TOPSIS polega na określeniu odległości rozpatrywanych obiektów od rozwiązania idealnego i antyidealnego. Końcowym rezultatem analizy jest wskaźnik syntetyczny tworzący ranking badanych obiektów. Za najlepszy obiekt uważa się ten, który ma najmniejszą odległość od rozwiązania idealnego i jednocześnie największą od rozwiązania antyidealnego."
+    }else if(input$method=="STANDARYZOWANYCH SUM"){
+      "Metoda standaryzowanych sum jest popularną techniką bezwzorcowego porządkowania liniowego. Punktem wyjścia jest standaryzacja zmiennych, które następnie sumuję w ramach kolejnych obserwacji uwzględniając podane wagi poszczególnych cech. Na koniec stosuję wzór, który syntetyczny wskaźnik „przesuwa” w przedział [0,1], gdzie wartość 1 otrzymuje najlepsza w rankingu obserwacja, a 0 najgorsza."
+    }else if(input$method=="RANG"){
+      "Metoda sumy rang polega na wyznaczeniu rang obiektów ze względu na każdą z cech, a następnie wyznaczeniu ich sumy bądź średniej. Gdy dana wartość zmiennej występuje w więcej niż jednym obiekcie, przyporządkowujemy im jednakową rangę będącą średnią arytmetyczną z przysługujących im rang. Uwaga: Ta metoda nie działa najlepiej dla zmiennych, które są zadane na skali przedziałowej."
+    }else if(input$method=="GŁÓWNYCH SKŁADOWYCH"){
+      
+    }
+  )
+  
+  
   values <- reactiveValues()
   
   # wczytywanie danych
