@@ -30,18 +30,29 @@ Struktura aplikacji została podzielona na 3 główne części:
   - RANKING
 
 ### OPIS
+
 Sekcja OPIS stworzona została przez Katarzynę Jędrocha.
 W sekcji OPIS znajdują się opisy metod użytych do tworzenia rankingów m.in.: 
 Metoda HELLWIGA, TOPSIS, SUMY RANG, STANDARYZOWANYCH SUM.
 Dzięki tej sekcji Użytkownik zostaje wprowadzony w metody które zostaną użyte do stworzenia rankingów na podstawie jego danych, w taki sposób, aby mógł dobrać najlepiej pasującą do jego zbioru. W każdym z opisów wymienione są wady i zalety metod oraz ich chrakterystyczne cechy.
 
 ### DANE
-W sekcji DANE znajdują się: 
-#
-#
-#
-#
-#
+
+Sekcja DANE podzielona jest na dwie części: 
+    
+    - część nawigacyjna
+    - część główna
+    
+#### Część główna
+
+  - Przycisk wczytania danych **Browse...** . Po uruchomieniu ukazuje się okno wyboru pliku źródłowego, w którym należy wybrać dane do stworzenia rankingu.
+  - Częścią główną tej sekcji jest podgląd danych. Jest to reaktywna tabela ukazująca podgląd wybranych danych "na żywo". Dzięki temu dane ukazują się tylko w taki sposób, w jaki użytkownik wybrał w sekcji nawigacyjnej.
+
+#### Część nawigacyjna
+
+  - Po lewej stronie w sekcji nawigacyjnej znajduje się **Wybór zmiennych**. W sekcji tej można wybrać tylko te zmienne, które według użytkownika najlepiej pasują do stworzenia rankingu według wybranej metody.
+  - Kolejną częścią sekcji nawigacyjnej jest **Wybór stymulant**. Stymulanty to te zmienne które w dodatni lub pozytywny sposób wpływają na pozycję danego obiektu w rankingu. To znaczy, im większa jest zmienna uznana przez użytkownika za stymulantę, tym większe są szanse na wyższą pozycję w rankingu danego obiektu. Część ta jest dostosowywana "na żywo". Oznacza to że wybór czy zmienna może być stymulantą, ukaże się dopiero po wyborze tej zmiennej w powyższej sekcji.
+  
 ### RANKING
 W sekcji RANKING znajdują się :
 #
