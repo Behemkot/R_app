@@ -54,22 +54,40 @@ Sekcja DANE podzielona jest na dwie części:
   - Kolejną częścią sekcji nawigacyjnej jest **Wybór stymulant**. Stymulanty to te zmienne które w dodatni lub pozytywny sposób wpływają na pozycję danego obiektu w rankingu. To znaczy, im większa jest zmienna uznana przez użytkownika za stymulantę, tym większe są szanse na wyższą pozycję w rankingu danego obiektu. Część ta jest dostosowywana "na żywo". Oznacza to że wybór czy zmienna może być stymulantą, ukaże się dopiero po wyborze tej zmiennej w powyższej sekcji.
   
 ### RANKING
+
 W sekcji RANKING znajdują się :
-#
-#
-#
-#
+ Każdy z rankingów wyświetlany jest w postaci tabeli. Do wyświetlenia wyników został użyty pakiet DT, pozwala on na swobodne manipulowanie wyglądem, wielkością oraz stylem tabeli. Ponadto umożliwia on wyszukiwanie pozycji w tabeli. Każda z tablei przedstawia:
+ 
+ - nazwę obiektu
+ - wartość która została obliczona daną metodą
+ - pozycję rankingu
+ 
+
+- 4 metody w nawigacji, gdzie do wyboru jest podgląd rankingu stworzonego przez daną metodę.
+- Przycisk zapisu rankingu do pliku.
+
+
 ### Implikacja Obliczeń
+
 Za tworzenie obliczeń i implikowanie ich do aplikacji odpowiedzialni byli Katarzyna Jędrocha oraz Szymon Bednarek.
-#
-#
-#
-#
-#
+
+Obliczenia zostały wykonane zgodnie z metodyką Statystycznej Analizy Danych. Dzięki temu udało się uzyskać proste algorytmy, tworzące rankingi w sposób zgodny teorią. 
+
 ### Tworzenie GUI
+
+Za tworzenie GUI odpowiedzialni byli, Michał Baran oraz Bartłomiej Kalata.
+GUI zostało stworzone w specjalnie przeznaczonym do tego pakiecie R: SHINY. Pozwala on na tworzenie aplikacji reagujących na żywo. GUI zostało podzielone na 3 główne sekcje tak aby użytkownik mógł przejść przez tzw. "ścieżkę", od wyboru danych, poprzez ich edycję, aż do gotowego produktu jakim jest ranking zapisany do pliku. 
 
 ### Testy aplikacji
 
+Za testy aplikacji odpowiedzialni byli wszyscy członkowie zespołu.
+Pierwszym z przeprowadzonych testów był test użytkowy. Podczas testowania każdego z elemetów wykazano następujące błędy:
+
+- Tablice w sekcji RANKINGI  nie wyświetlały się w prawidłowy sposób.
+- Podczas wybrania tylko jednej zmiennej, podgląd danych w sekcji DANE, nie wyświetlał się prawidłowo.
+
 ### Dokumentacja
+
+Dokumentacja została wykonana przez Bartłomieja Kalata. 
 
 
