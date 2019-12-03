@@ -12,7 +12,7 @@ ui <- fluidPage(theme = shinytheme("cyborg"),
   navbarPage("MENU",inverse = T,
     tabPanel("OPIS",
             sidebarPanel(
-            selectInput("method","METODA:",choices = c("HELLWIG","TOPSIS","STANDARYZOWANYCH SUM","RANG","GŁÓWNYCH SKŁADOWYCH"))
+            selectInput("method","METODA:",choices = c("HELLWIG","TOPSIS","STANDARYZOWANYCH SUM","RANG"))
             ),
             mainPanel(
               textOutput("description") #tu przydzielić opisy metod w zależności od wyboru
@@ -22,7 +22,9 @@ ui <- fluidPage(theme = shinytheme("cyborg"),
              sidebarPanel(
                tabPanel("WYBÓR",
                         checkboxGroupInput("header", "Zmienne:", choices = variables), #w variables mają być nazwy zmiennych, a z headera wybieramy zmienne
-                        actionButton("selectall","Zaznacz wszystkie")
+                        actionButton("selectall","Zaznacz wszystkie"), 
+                        checkboxGroupInput("ch_test", "Wybierz stymulanty", choices = variables),
+                        actionButton("selectall2","Zaznacz wszystkie")
                       )
              ),
             mainPanel(
@@ -48,10 +50,6 @@ ui <- fluidPage(theme = shinytheme("cyborg"),
               tabPanel("RANG",
                        dataTableOutput("rank_rank"),
                        downloadButton("save_r", "Zapisz") 
-                       ),
-              tabPanel("GŁÓWNYCH SKŁADOWYCH",
-                       dataTableOutput("main_rank"),
-                       downloadButton("save_m", "Zapisz") 
                        )
               ))
  
@@ -192,7 +190,6 @@ metodaGlownejSkladowej <- function(dane, wagi, charakter) {
 server <- function(input, output, session) {
   
   #Opisy metod
-  
   output$description<-renderText(
     if(input$method=="HELLWIG"){
       "Metoda Hellwiga jest jedną z powszechnie stosowanych metod taksonomicznych. Oblicza się ją jako syntetyczny wskaźnik taksonomicznej odległości wybranego obiektu od teoretycznego wzorca rozwoju. Przy wykorzystaniu odpowiednich wzorów wyznaczyć można wskaźnik syntetyczny dla każdego obiektu. Miernik ten przyjmuje wartości z przedziału [0,1]. Im wyższa wartość miernika tym obiekt jest bardziej zbliżony do wzorca, natomiast im niższa wartość tym obiekt jest bardziej od niego oddalony."
@@ -202,8 +199,6 @@ server <- function(input, output, session) {
       "Metoda standaryzowanych sum jest popularną techniką bezwzorcowego porządkowania liniowego. Punktem wyjścia jest standaryzacja zmiennych, które następnie sumuję w ramach kolejnych obserwacji uwzględniając podane wagi poszczególnych cech. Na koniec stosuję wzór, który syntetyczny wskaźnik „przesuwa” w przedział [0,1], gdzie wartość 1 otrzymuje najlepsza w rankingu obserwacja, a 0 najgorsza."
     }else if(input$method=="RANG"){
       "Metoda sumy rang polega na wyznaczeniu rang obiektów ze względu na każdą z cech, a następnie wyznaczeniu ich sumy bądź średniej. Gdy dana wartość zmiennej występuje w więcej niż jednym obiekcie, przyporządkowujemy im jednakową rangę będącą średnią arytmetyczną z przysługujących im rang. Uwaga: Ta metoda nie działa najlepiej dla zmiennych, które są zadane na skali przedziałowej."
-    }else if(input$method=="GŁÓWNYCH SKŁADOWYCH"){
-      
     }
   )
   
@@ -216,16 +211,14 @@ server <- function(input, output, session) {
     if(is.null(infile)){
       return(data.frame())
     }
-    
     read.csv(infile$datapath, sep = ';', row.names = 1, header = TRUE, encoding = "utf-8")
   })
   
+  
   # wybór zmiennych
-  observe({
+  observeEvent(input$selectall, {
     data <- values$data()
     variables <- colnames(data)
-    updateCheckboxGroupInput(session, "header", choices = variables)
-    
     if(input$selectall == 0) return(NULL) 
     else if (input$selectall%%2 == 0){
       updateCheckboxGroupInput(session,"header",choices = variables)
@@ -233,13 +226,51 @@ server <- function(input, output, session) {
     else{
       updateCheckboxGroupInput(session,"header",choices = variables,selected = variables)
     }
-
-    
+  })
+  
+  observeEvent(values$data(), {
+    data <- values$data()
+    variables <- colnames(data)
+    updateCheckboxGroupInput(session, "header", choices = variables)
   })
   
   values$filtered <- reactive({
     data <- values$data()
     data <- data[as.vector(input$header)]
+  })
+  
+  observeEvent(values$filtered(), {
+    data <- values$filtered()
+    var <- colnames(data)
+    updateCheckboxGroupInput(session, "ch_test", choices = var)
+  })
+  
+  observeEvent(input$selectall2, {
+    data <- values$filtered()
+    var <- colnames(data)
+    if(input$selectall2 == 0) return(NULL) 
+    else if (input$selectall2%%2 == 0){
+      updateCheckboxGroupInput(session,"ch_test",choices = var)
+    }
+    else{
+      updateCheckboxGroupInput(session,"ch_test",choices = var,selected = var)
+    }
+  })
+  
+  values$character <- reactive({
+    all_val <- colnames(values$filtered())
+    selected <- as.vector(input$ch_test)
+    print(selected)
+    out <- c()
+    for (i in 1:length(all_val)){
+      if(is.element(all_val[i], selected)){
+        out <- c(out, "+")
+      }
+      else {
+        out <- c(out, "-")
+      }
+    }
+    out
   })
   
   # todo
@@ -253,21 +284,6 @@ server <- function(input, output, session) {
     w
   })
   
-  # todo
-  values$character <- reactive({
-    data <- values$filtered()
-    ch <- c()
-    for(i in 1:dim(data)[2]){
-      ch <- c(ch, "+")
-    }
-    ch
-  })
-  
-  # podgląd danych
-  # todo: nie wyswietlją się nazwy wierszy
-  output$data_view <- DT::renderDataTable({
-      datatable(values$filtered(), rownames = TRUE)
-    })
 
   # skrypty ogarniające ranking
   values$HELLWIG <- reactive({
@@ -310,22 +326,18 @@ server <- function(input, output, session) {
     data
   })
   
-  # todo
-  values$MAIN <- reactive({
-    data <- values$filtered()
-    w <- as.vector(values$weights())
-    ch <- as.vector(values$character())
-    
-    data <- metodaGlownejSkladowej(data, w, ch)
-    data
+  
+  # podgląd danych
+  output$data_view <- DT::renderDataTable({
+    datatable(values$filtered(), rownames = TRUE)
   })
+  
   
   # wyświetlanie rankingów
   output$hellwig_rank <- renderDataTable({values$HELLWIG()})
   output$topsis_rank <- renderDataTable({values$TOPSIS()})
   output$stand_rank <- renderDataTable({values$STAND()})
   output$rank_rank <- renderDataTable({values$RANG()})
-  output$main_rank <- renderDataTable({values$MAIN()})
   
   # zapis rankingów do plików
   
@@ -356,13 +368,6 @@ server <- function(input, output, session) {
     filename = function(){"ranking_rang.csv"},
     content = function(fname){
       write.csv(as.data.frame(values$RANG()), fname)
-    }
-  )
-  values$data_to_save <- reactive({values$MAIN})
-  output$save_m <- downloadHandler(
-    filename = function(){"ranking_g_skladowa.csv"},
-    content = function(fname){
-      write.csv(as.data.frame(values$MAIN()), fname)
     }
   )
 
