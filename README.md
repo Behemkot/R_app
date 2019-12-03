@@ -71,7 +71,7 @@ W sekcji RANKING znajdują się :
 
 Za tworzenie obliczeń i implikowanie ich do aplikacji odpowiedzialni byli Katarzyna Jędrocha oraz Szymon Bednarek.
 
-
+Obliczenia zostały wykonane zgodnie z metodyką Statystycznej Analizy Danych. Dzięki temu udało się uzyskać proste algorytmy, tworzące rankingi w sposób zgodny teorią. 
 
 ### Tworzenie GUI
 
@@ -88,6 +88,6 @@ Pierwszym z przeprowadzonych testów był test użytkowy. Podczas testowania ka�
 
 ### Dokumentacja
 
-Dokumentacja została wykonana przez 
+Dokumentacja została wykonana przez Bartłomieja Kalata. 
 
 
