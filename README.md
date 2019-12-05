@@ -9,7 +9,16 @@ Szymon Bednarek
 Michał Baran
 Bartłomiej Kalata
 
+# specyfikacja
 
+# opisy do
+
+# podział pracy jak zaplanowaliśmy i  jak wyszło faktycznie
+
+# harmonogram ostateczny i faktyczny
+
+# opis jak powstało rozwiązanie uwzględnić technologie i własne fragmenty kodu ( odpowiedzieć dlaczego wybraliśmy R)
+ 
 ### Projektowanie aplikacji
   Za projektowanie aplikacji odpowiedzialni byli wszyscy członkowie zespołu projektowego. Struktura została zaprojektowana tak aby użytkownik po uruchomieniu przeszedł ścieżkę wskazaną w zakładkach i otrzymał gotowy produkt w postaci rankingu. Aplikacja cechuje się:
   
