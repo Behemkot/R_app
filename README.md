@@ -46,7 +46,7 @@ Sekcja DANE podzielona jest na dwie części:
 - część nawigacyjna
 - część główna
 
-####Część główna
+#### Część główna
 
 •	Przycisk wczytania danych Browse... . Po uruchomieniu ukazuje się okno wyboru pliku źródłowego, w którym należy wybrać dane do stworzenia rankingu.
 •	Częścią główną tej sekcji jest podgląd danych. Jest to reaktywna tabela ukazująca podgląd wybranych danych "na żywo". Dzięki temu dane ukazują się tylko w taki sposób, w jaki użytkownik wybrał w sekcji nawigacyjnej.
