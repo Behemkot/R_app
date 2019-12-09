@@ -17,14 +17,15 @@ Pomysł na projekt w formie w jakiej powstał związany jest z analityczną czę
 ## Funkcjonalność aplikacji
 
 Za sprecyzowanie poszczególnych funkcjonalności aplikacji odpowiedzialni byli wszyscy członkowie zespołu. Stworzony projekt cechują następujące funkcjonalności:
- 1.	Wczytywanie danych z pliku
- 2.	Wybór odpowiednich zmiennych z pliku branych pod uwagę przy tworzeniu rankingu
- 3.	Wybór charakteru danych zmiennych (stymulanta bądź destymulanta)
- 4.	Wybór metod tworzenia rankingu
- 5.	Zapoznanie się z charakterem poszczególnych metod porządkowania liniowego
- 6.	Zastosowanie poprawnej formuły matematycznej do obliczenia rządanego przez użytkownika rankingu 
- 7.	Wyświetlenie rezultatów w postaci tabeli odpowiadających poszczególnym zastosowanym metodom 
- 8.	Zapis wybranych wyników do pliku
+
+  1.	Wczytywanie danych z pliku
+  2.	Wybór odpowiednich zmiennych z pliku branych pod uwagę przy tworzeniu rankingu
+  3.	Wybór charakteru danych zmiennych (stymulanta bądź destymulanta)
+  4.	Wybór metod tworzenia rankingu
+  5.	Zapoznanie się z charakterem poszczególnych metod porządkowania liniowego
+  6.	Zastosowanie poprawnej formuły matematycznej do obliczenia rządanego przez użytkownika rankingu 
+  7.	Wyświetlenie rezultatów w postaci tabeli odpowiadających poszczególnym zastosowanym metodom 
+  8.	Zapis wybranych wyników do pliku
  
 ## Kod aplikacji – omówienie zastosowanych rozwiązań
 
@@ -51,22 +52,26 @@ Sekcja DANE podzielona jest na dwie części:
 
 #### Część główna
 
-•	Przycisk wczytania danych Browse... . Po uruchomieniu ukazuje się okno wyboru pliku źródłowego, w którym należy wybrać dane do stworzenia rankingu.
-•	Częścią główną tej sekcji jest podgląd danych. Jest to reaktywna tabela ukazująca podgląd wybranych danych "na żywo". Dzięki temu dane ukazują się tylko w taki sposób, w jaki użytkownik wybrał w sekcji nawigacyjnej.
+ •	Przycisk wczytania danych Browse... . Po uruchomieniu ukazuje się okno wyboru pliku źródłowego, w którym należy wybrać dane do stworzenia rankingu.
+
+ •	Częścią główną tej sekcji jest podgląd danych. Jest to reaktywna tabela ukazująca podgląd wybranych danych "na żywo". Dzięki temu dane ukazują się tylko w taki sposób, w jaki użytkownik wybrał w sekcji nawigacyjnej.
 
 #### Część nawigacyjna
 
-•	Po lewej stronie w sekcji nawigacyjnej znajduje się Wybór zmiennych. W sekcji tej można wybrać tylko te zmienne, które według użytkownika najlepiej pasują do stworzenia rankingu według wybranej metody.
-•	Kolejną częścią sekcji nawigacyjnej jest Wybór stymulant. Stymulanty to te zmienne które w dodatni lub pozytywny sposób wpływają na pozycję danego obiektu w rankingu. To znaczy, im większa jest zmienna uznana przez użytkownika za stymulantę, tym większe są szanse na wyższą pozycję w rankingu danego obiektu. Część ta jest dostosowywana "na żywo". Oznacza to że wybór czy zmienna może być stymulantą, ukaże się dopiero po wyborze tej zmiennej w powyższej sekcji.
+ •	Po lewej stronie w sekcji nawigacyjnej znajduje się Wybór zmiennych. W sekcji tej można wybrać tylko te zmienne, które według użytkownika najlepiej pasują do stworzenia rankingu według wybranej metody.
+
+ •	Kolejną częścią sekcji nawigacyjnej jest Wybór stymulant. Stymulanty to te zmienne które w dodatni lub pozytywny sposób wpływają na pozycję danego obiektu w rankingu. To znaczy, im większa jest zmienna uznana przez użytkownika za stymulantę, tym większe są szanse na wyższą pozycję w rankingu danego obiektu. Część ta jest dostosowywana "na żywo". Oznacza to że wybór czy zmienna może być stymulantą, ukaże się dopiero po wyborze tej zmiennej w powyższej sekcji.
 
 ### RANKING
 
-W sekcji RANKING znajdują się : Każdy z rankingów wyświetlany jest w postaci tabeli. Do wyświetlenia wyników został użyty pakiet DT, pozwala on na swobodne manipulowanie wyglądem, wielkością oraz stylem tabeli. Ponadto umożliwia on wyszukiwanie pozycji w tabeli. Każda z tablei przedstawia:
-•	nazwę obiektu
-•	wartość która została obliczona daną metodą
-•	pozycję rankingu
-•	4 metody w nawigacji, gdzie do wyboru jest podgląd rankingu stworzonego przez daną metodę.
-•	Przycisk zapisu rankingu do pliku.
+W sekcji RANKING znajdują się : 
+Każdy z rankingów wyświetlany jest w postaci tabeli. Do wyświetlenia wyników został użyty pakiet DT, pozwala on na swobodne manipulowanie wyglądem, wielkością oraz stylem tabeli. Ponadto umożliwia on wyszukiwanie pozycji w tabeli. Każda z tabeli przedstawia:
+
+ •	nazwę obiektu
+ •	wartość która została obliczona daną metodą
+ •	pozycję rankingu
+ •	4 metody w nawigacji, gdzie do wyboru jest podgląd rankingu stworzonego przez daną metodę.
+ •	Przycisk zapisu rankingu do pliku.
 
 ## Implikacja Obliczeń
 
