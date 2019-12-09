@@ -32,9 +32,12 @@ Za sprecyzowanie poszczególnych funkcjonalności aplikacji odpowiedzialni byli 
 
 ### Tworzenie struktury
 Za tworzenie struktury aplikacji odpowiedzialni byli Baran Michał oraz Bartłomiej Kalata. Struktura aplikacji została podzielona na 3 główne części:
-•	OPIS
-•	DANE
-•	RANKING
+
+ •	OPIS
+ 
+ •	DANE
+ 
+ •	RANKING
 
 ### OPIS
 
