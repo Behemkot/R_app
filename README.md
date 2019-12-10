@@ -29,9 +29,20 @@ Za sprecyzowanie poszczególnych funkcjonalności aplikacji odpowiedzialni byli 
  
 ## Kod aplikacji – omówienie zastosowanych rozwiązań
 
+Kod w aplikacji składa się z dwóch głównych bloków:
+
+ * strukturty aplikacji webowej shiny
+ 
+ * zaimplementowanych matematycznych metod tworzenia rankingów
+ 
+Taka struktura kodu sprawia, że jest on czytelny i prosty w edycji. W przypadku pojawiających się błędów lub potrzebnych aktualizacji aplikacji, łatwo można wyszukać fragment kodu odpowiedzialny za daną funkcjonalność i przystosować go do potrzeb użytkownika.Struktura aplikacji została podzilona na panele, a stylistyka została wykonana poprzez wykorzystanie elementów CSS'a, dzięki czemu program jest intuicyjny i przyjazny dla użytkownika.
+Wszystkie metody wielowymiarowej analizy danych (TOPSIS, Hellwig, Standaryzowanych sum oraz Rang) zostały zaimplementowane samodzielnie przy pomocy specjalnych pakietów pozwalających na zoptymalizowanie procesów obliczeniowych.  
+
+
 ## Projektowanie aplikacji
 
 ### Tworzenie struktury
+
 Za tworzenie struktury aplikacji odpowiedzialni byli Baran Michał oraz Bartłomiej Kalata. Struktura aplikacji została podzielona na 3 główne części:
 
  •	OPIS
