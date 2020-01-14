@@ -3,6 +3,7 @@ library(shinythemes)
 library(topsis)
 library(clusterSim)
 library(DT)
+library(psych)
 
 variables <- c()
 
@@ -32,6 +33,11 @@ ui <- fluidPage(theme = shinytheme("cyborg"),
                         accept=c('text/csv','text/comma-separated-values,text/plain','.csv')), #wczytuje dane do "file"
               dataTableOutput("data_view") #tu przydzielić tabelke z danymi po wczytaniu
             )),
+    tabPanel("STATYSTYKI",
+             mainPanel(
+               dataTableOutput("stats") #statystyki opisowe
+             )
+            ),
    
     tabPanel("RANKING",
              navbarPage("METODA",
@@ -327,6 +333,11 @@ server <- function(input, output, session) {
   output$data_view <- DT::renderDataTable({
     datatable(values$filtered(), rownames = TRUE)
   })
+  
+  # statystyki opisowe
+  output$stats <- DT::renderDataTable({
+    datatable(describeBy(values$filtered(), rownames = T))
+    })
   
   
   # wyświetlanie rankingów
