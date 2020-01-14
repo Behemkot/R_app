@@ -45,13 +45,13 @@ Wszystkie metody wielowymiarowej analizy danych (TOPSIS, Hellwig, Standaryzowany
 
 Za tworzenie struktury aplikacji odpowiedzialni byli Baran Michał oraz Bartłomiej Kalata. Struktura aplikacji została podzielona na 3 główne części:
 
- •	OPIS
+ *	OPIS
  
- •	DANE
+ *	DANE
  
  * STATYSTYKI
  
- •	RANKING
+ *	RANKING
 
 ### OPIS
 
@@ -116,9 +116,18 @@ Za tworzenie GUI odpowiedzialni byli, Michał Baran oraz Bartłomiej Kalata. GUI
 ## Testy aplikacji
 
 Za testy aplikacji odpowiedzialni byli wszyscy członkowie zespołu. Pierwszym z przeprowadzonych testów był test użytkowy. Podczas testowania każdego z elementów wykazano następujące błędy:
-•	Tablice w sekcji RANKINGI nie wyświetlały się w prawidłowy sposób.
-•	Podczas wybrania tylko jednej zmiennej, podgląd danych w sekcji DANE, nie wyświetlał się prawidłowo.
-Oba te błędy nie były poważne i zostały szybko poprawione przez Szymona Bednarka oraz Michała Barana. 
+
+*	Tablice w sekcji RANKINGI nie wyświetlały się w prawidłowy sposób. Rozwiązanie: Zastosowanie biblioteki "DF".
+
+*	Podczas wybrania tylko jednej zmiennej, podgląd danych w sekcji DANE, nie wyświetlał się prawidłowo. Rozwiązanie: Napisanie funkcji obsługującej dany błąd.
+
+* Ranking wykonywany metodą TOPSIS nie brał pod uwagę czy zmienne są stymulantami. Rozwiązanie: Zmienia sposobu deklaracji stymulant.
+
+* Statystyki opisowe wyświetlały się dla wszsytkich zmiennych niezależnie od wybranych elelmentów. Rozwiązanie: Wydzielenie osobnej tablicy danych tylko z "zaznaczonymi" zmiennymi.
+
+* Plik z zapisem rankingu generował się w niedopowiednim folderze. Rozwiązanie: Stworzenie funkcji zapisu o określoną ścieżką zapisu.
+
+Wszystkie powyższe błędy zostały szybko poprawione poprzez zastosowanie powyższych rozwiązań przez Szymona Bednarka oraz Michała Barana. 
 
 ## Dokumentacja 
 
