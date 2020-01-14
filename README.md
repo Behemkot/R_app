@@ -49,6 +49,8 @@ Za tworzenie struktury aplikacji odpowiedzialni byli Baran Michał oraz Bartłom
  
  •	DANE
  
+ * STATYSTYKI
+ 
  •	RANKING
 
 ### OPIS
@@ -72,6 +74,24 @@ Sekcja DANE podzielona jest na dwie części:
  •	Po lewej stronie w sekcji nawigacyjnej znajduje się Wybór zmiennych. W sekcji tej można wybrać tylko te zmienne, które według użytkownika najlepiej pasują do stworzenia rankingu według wybranej metody.
 
  •	Kolejną częścią sekcji nawigacyjnej jest Wybór stymulant. Stymulanty to te zmienne które w dodatni lub pozytywny sposób wpływają na pozycję danego obiektu w rankingu. To znaczy, im większa jest zmienna uznana przez użytkownika za stymulantę, tym większe są szanse na wyższą pozycję w rankingu danego obiektu. Część ta jest dostosowywana "na żywo". Oznacza to że wybór czy zmienna może być stymulantą, ukaże się dopiero po wyborze tej zmiennej w powyższej sekcji.
+
+### STATYSTYKI
+W sekcji STATYSTYKI znaleźć możemy statystyki opisowe dla każdej zmiennej wybranej po wczytaniu danych. 
+Lista dostępnych statystyk:
+
+* n - liczba obserawcji
+* mean - średnia wartość
+* sd - odchylenie standardowe
+* median - mediana
+* trimmed - średnia ucinana
+* mad - średnie odchylenie standardowe
+* min - wartość mininalna
+* max - wartość maksymalna
+* range - rozpiętość danych (różnica między wartością minimalną, a maksymalną)
+* skew - skośność
+* kurtosis - kurtoza
+* se - błąd standardowy
+
 
 ### RANKING
 
