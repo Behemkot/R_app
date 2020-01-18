@@ -7,9 +7,11 @@ library(psych)
 
 variables <- c()
 
-ui <- fluidPage(theme = shinytheme("cyborg"),
+ui <- fluidPage(
+
+  theme = shinytheme("darkly"),
   includeCSS("./style/table.css"),
-  titlePanel("Projekt IE"),
+  titlePanel("RANG-ME"),
   navbarPage("MENU",inverse = T,
     tabPanel("OPIS",
             sidebarPanel(
