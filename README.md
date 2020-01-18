@@ -128,6 +128,8 @@ Za testy aplikacji odpowiedzialni byli wszyscy członkowie zespołu. Pierwszym z
 * Plik z zapisem rankingu generował się w niedopowiednim folderze. Rozwiązanie: Stworzenie funkcji zapisu o określoną ścieżką zapisu.
 
 Wszystkie powyższe błędy zostały szybko poprawione poprzez zastosowanie powyższych rozwiązań przez Szymona Bednarka oraz Michała Barana. 
+Po poprawieniu wszystkich błędów aplikacja została przetestowana ponownie i nie wykazano żadnych błędów użytkowych.
+
 
 ## Dokumentacja 
 
