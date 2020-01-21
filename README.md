@@ -133,5 +133,5 @@ Po poprawieniu wszystkich błędów aplikacja została przetestowana ponownie i 
 
 ## Dokumentacja 
 
-Dokumentacja została wykonana przez Bartłomieja Kalata oraz Katarzynę Jędrocha.
+Dokumentacja została wykonana przez Bartłomieja Kalata, Katarzynę Jędrocha oraz Michała Barana.
 
